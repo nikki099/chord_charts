@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
+    <style>
+        /* css 代码  */
+    </style>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/dependency-wheel.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <style>
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+
+        #csv {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Chart showing a dependency wheel, where each point consists of multiple
+            weighted links to other points. This chart type is often used to
+            visualize data flow, and can be a striking way to illustrate
+            relationships in data.
+        </p>
+    </figure>
+
+    <script src="https://code.highcharts.com.cn/highcharts/modules/dependency-wheel.js"></script>
+    <script>
+
+        Highcharts.chart('container', {
+
+            title: {
+                text: 'Cross Domain Traffic'
+            },
+
+            accessibility: {
+                point: {
+                    valueDescriptionFormat: '{index}. From {point.from} to {point.to}: {point.weight}.'
+                }
+            },
+
+            series: [{
+                keys: ['from', 'to', 'weight'],
+                data: [
+                    ['OSDC', 'Customer Portal', 64711],
+                    ['OSDC', 'RHDC', 64170],
+                    ['OSDC', 'ansible', 37053],
+                    ['OSDC', 'RHDC', 22646],
+                    ['OSDC', 'OCP', 13292],
+                    ['RHDC', 'Customer Portal', 531249],
+                    ['RHDC', 'SSO', 253829],
+                    ['RHDC', 'RHDC', 150681],
+                    ['RHDC', 'OCP', 56196],
+                    ['RHDC', 'OSDC', 53986],
+                    ['Customer Portal', 'SSO', 531249],
+                    ['Customer Portal', 'RHDC', 253829],
+                    ['Customer Portal', 'RHDC', 150681],
+                    ['Customer Portal', 'OCP', 56196],
+                    ['Customer Portal', 'ansible', 53986],
+                    ['Customer Portal', 'OSDC', 53986],
+                    ['OCP', 'Customer Portal', 112773],
+                    ['OCP', 'RHDC', 72562],
+                    ['OCP', 'SSO', 44113],
+                    ['OCP', 'RHDC', 38428],
+                    ['OCP', 'ansible', 15777],
+                    ['OCP', 'OSDC', 14127],
+                    ['ansible', 'Customer Portal', 75087],
+                    ['ansible', 'RHDC', 63910],
+                    ['ansible', 'OSDC', 41726],
+                    ['ansible', 'OCP', 16077],
+                    ['ansible', 'SSO', 11483],
+                    ['ansible', 'RHDC', 10118],
+                    ['RHD', 'SSO', 317538],
+                    ['RHD', 'Customer Portal', 194151],
+                    ['RHD', 'RHDC', 92775],
+                    ['RHD', 'OCP', 31352],
+                    ['RHD', 'OSDC', 11351],
+                    ['RHD', 'ansible', 9026],
+                    ['SSO', 'Customer Portal', 603018],
+                    ['SSO', 'RHDC', 135531],
+                    ['SSO', 'SSO', 88228],
+                    ['SSO', 'RHDC', 68104],
+                    ['SSO', 'OCP', 44423],
+                    ['TEP', 'OSDC', 13088],
+                    ['TEP', 'RHDC', 10846],
+                    ['TEP', 'OCP', 1673],
+                    ['TEP', 'RHDC', 779],
+                    ['TEP', 'ansible', 577],
+                    ['TEP', 'Customer Portal', 390]
+                ],
+                type: 'dependencywheel',
+                name: 'Dependency wheel series',
+                dataLabels: {
+                    color: '#333',
+                    textPath: {
+                        enabled: true,
+                        attributes: {
+                            dy: 5
+                        }
+                    },
+                    distance: 10
+                },
+                size: '95%'
+            }]
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
